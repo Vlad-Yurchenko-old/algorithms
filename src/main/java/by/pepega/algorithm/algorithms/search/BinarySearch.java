@@ -32,5 +32,4 @@ public class BinarySearch<T extends Comparable<T>> implements SearchAlgorithm<T>
         }
     }
 
-
 }
