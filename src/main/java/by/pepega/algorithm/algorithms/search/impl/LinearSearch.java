@@ -1,5 +1,6 @@
-package by.pepega.algorithm.algorithms.search;
+package by.pepega.algorithm.algorithms.search.impl;
 
+import by.pepega.algorithm.algorithms.search.SearchAlgorithm;
 import by.pepega.algorithm.structures.Array;
 
 public class LinearSearch<T extends Comparable<T>> implements SearchAlgorithm<T> {

@@ -1,7 +1,9 @@
-package by.pepega.algorithm.algorithms.search;
+package by.pepega.algorithm.algorithms.search.impl;
 
+import by.pepega.algorithm.algorithms.search.SearchAlgorithm;
 import by.pepega.algorithm.structures.Array;
 
+@SuppressWarnings("Duplicates")
 public class BinarySearch<T extends Comparable<T>> implements SearchAlgorithm<T> {
 
     @Override
