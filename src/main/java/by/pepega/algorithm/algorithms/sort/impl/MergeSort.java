@@ -3,6 +3,7 @@ package by.pepega.algorithm.algorithms.sort.impl;
 import by.pepega.algorithm.algorithms.sort.SortAlgorithm;
 import by.pepega.algorithm.algorithms.sort.SortDirection;
 import by.pepega.algorithm.structures.Array;
+import by.pepega.algorithm.structures.Pair;
 
 @SuppressWarnings("Duplicates")
 public class MergeSort<T extends Comparable<T>> implements SortAlgorithm<T> {
@@ -15,19 +16,37 @@ public class MergeSort<T extends Comparable<T>> implements SortAlgorithm<T> {
 
     @Override
     public Array<T> sort(Array<T> array, SortDirection sortDirection) {
-        return sort(array);
+        if (array.size() == 1)
+            return array;
+
+        Pair<Array<T>, Array<T>> splitArray = split(array);
+
+        return merge(sort(splitArray.getFirst()), sort(splitArray.getSecond()));
     }
 
 
+    //TODO: переделать на from - to
+    //TODO: сделать для нечетн.
+    private Pair<Array<T>, Array<T>> split(Array<T> array) {
 
-    public static void main(String[] args) {
-        Array<Integer> first = new Array<>(new Integer[]{2});
-        Array<Integer> second = new Array<>(new Integer[]{1});
+        int n = array.size() - array.size() / 2;
+        int m = array.size() / 2;
 
-        System.out.println(mergeSortedArrays(first, second));
+        Array<T> first = new Array<>(n);
+        Array<T> second = new Array<>(m);
+
+        for (int i = 0, j = 0; i < m; i++, j++) {
+            first.set(j, array.get(i));
+        }
+
+        for (int i = n, j = 0; i < array.size(); i++, j++) {
+            second.set(j, array.get(i));
+        }
+
+        return new Pair<>(first, second);
     }
 
-    private static <T extends Comparable<T>> Array<T> mergeSortedArrays(Array<T> first, Array<T> second) {
+    private Array<T> merge(Array<T> first, Array<T> second) {
         Array<T> result = new Array<>(first.size() + second.size());
 
         for (int i = 0, j = 0, k = 0; i < first.size() && j < second.size(); k++) {
