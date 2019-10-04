@@ -1,5 +1,7 @@
 package by.pepega.algorithm.structures;
 
+import java.util.Arrays;
+
 @SuppressWarnings({"unchecked", "unused"})
 public class Array<T> {
 
@@ -28,4 +30,11 @@ public class Array<T> {
         this.elements[index] = element;
     }
 
+
+    @Override
+    public String toString() {
+        return "Array{" +
+                "elements=" + Arrays.toString(elements) +
+                '}';
+    }
 }
